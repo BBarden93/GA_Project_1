@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="trivia.css">
     <script src="jquery-3.3.1.js"></script>
+    <script src="trivia.js"></script>
     <title>Coding Trivia</title>
 </head>
 <body>
@@ -24,7 +25,7 @@
             </div>
             <div id="clock">
                 <span id="time-remaining">Time remaining:</span>
-                <span id="seconds">15</span>
+                <span id="seconds">25</span>
             </div>
             <div id="player2">
                 <span id="p1">Player 2</span><br />
@@ -32,20 +33,22 @@
                 <span id="pointsP1">7</span>
             </div>
         </div>
-        <h3>Which line of code is incorrect?</h3>
-        <p>
+        <p id="questionBox">
+            <span class="question">Question: I'm Ron Burgandy?</span>
+        </p>
+        <p class="answers">
             <span class="answerBox">Hello</span>
             <input type="checkbox">
         </p>
-        <p>
+        <p class="answers">
             <span class="answerBox">Hello</span>
             <input type="checkbox">
         </p>
-        <p>
+        <p class="answers">
             <span class="answerBox">Hello</span>
             <input type="checkbox">
         </p>
-        <p>
+        <p class="answers">
             <span class="answerBox">Hello</span>
             <input type="checkbox">
         </p>
