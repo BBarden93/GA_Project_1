@@ -26,19 +26,24 @@ var questionsList = [
     a: 0,
     ptValue: 1 }
 ]
-//variables for time function
+// variables for time function
 var $startBtn = $('#startButton')
 var $seconds = $('#seconds')
 var time = $seconds.text()
 var timer = Number(time) 
 var countdown;
-//variables for population using question list
+// variables for population using question list
 var $questionBox = $('#questionBox')
 var $question = $('.question')
 var $answerBox1 = $('#answerBox1')
 var $answerBox2 = $('#answerBox2')
 var $answerBox3 = $('#answerBox3')
 var $answerBox4 = $('#answerBox4')
+
+// randomizer for choosing next question
+function randomInt(n){
+    return Math.floor(Math.random() * n)
+}
 
 function startClock() {
     console.log('You have clicked the start button') 
@@ -58,23 +63,67 @@ function stopTimer(){
     clearInterval(countdown)
     }
 }
+
+// change question-select random object from questionsList array
+function nextQuestion(){ 
+    var randomNumber = randomInt(questionsList.length)
+    var theQuestion = questionsList[randomNumber];
+    return theQuestion;
+}
+
+// link checkbox to question
+var $checkbox1 = $('#chk1')
+$checkbox1.on('click', answerClick)
+var $checkbox2 = $('#chk2')
+$checkbox2.on('click', answerClick)
+var $checkbox3 = $('#chk3')
+$checkbox3.on('click', answerClick)
+var $checkbox4 = $('#chk4')
+$checkbox4.on('click', answerClick)
+
+function answerClick(){
+    console.log('checkbox clicked')
+    //check if correct answer
+
+    console.log('go to next question')
+    var nQ = nextQuestion()
+    console.log(nQ)
+    populate(nQ)
+}
+
+// access question list- question goes to questions box 
+// options go to spans
+function populate(theQuestion){
+    $question.text(theQuestion.question)
+
+    $answerBox1.text(theQuestion.options[0])
+    $answerBox2.text(theQuestion.options[1])
+    $answerBox3.text(theQuestion.options[2])
+    $answerBox4.text(theQuestion.options[3])
+}
+
 $('#startButton').on('click', startClock);
 
-function populate() {
-    //access question list- question goes to questions box 
-    $question.text(questionsList[0].question)
-    // options go to spans
-    $answerBox1.text(questionsList[0].options[0])
-    $answerBox2.text(questionsList[0].options[1])
-    $answerBox3.text(questionsList[0].options[2])
-    $answerBox4.text(questionsList[0].options[3])
+// if box clicked = correct answer add points to correct player
+
+// input point value to score board
+var $pointsP1 = $('#pointsP1');
+ $pointsP1.text(0);
+
+var $pointsP2 = $('#pointsP2');
+ $pointsP2.text(0);
+
+var score = 0;
+
+function addPoints(){
+    $pointsP1.text(score + questionsList[randomNumber].ptValue)
 }
 
+//switch players after 25 seconds
+
 /*
-function randomInt(n){
-    return Math.floor(Math.random() * n)
-}
 var game = {
+    players: [{name:'Player 1'}, {name:'Player 2'}]
     questions: questionsList,
     currentQuestion: null,
     currentPlayer: null,
