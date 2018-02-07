@@ -35,10 +35,10 @@ var countdown;
 // variables for population using question list
 var $questionBox = $('#questionBox')
 var $question = $('.question')
+var $answerBox0 = $('#answerBox0')
 var $answerBox1 = $('#answerBox1')
 var $answerBox2 = $('#answerBox2')
 var $answerBox3 = $('#answerBox3')
-var $answerBox4 = $('#answerBox4')
 
 // randomizer for choosing next question
 function randomInt(n){
@@ -71,15 +71,15 @@ function nextQuestion(){
     return theQuestion;
 }
 
-// link checkbox to question
-var $checkbox1 = $('#chk1')
-$checkbox1.on('click', answerClick)
-var $checkbox2 = $('#chk2')
-$checkbox2.on('click', answerClick)
-var $checkbox3 = $('#chk3')
-$checkbox3.on('click', answerClick)
-var $checkbox4 = $('#chk4')
-$checkbox4.on('click', answerClick)
+// make button responsive
+var $button0 = $('#button0')
+$button0.on('click', answerClick)
+var $button1 = $('#button1')
+$button1.on('click', answerClick)
+var $button2 = $('#button2')
+$button2.on('click', answerClick)
+var $button3 = $('#button3')
+$button3.on('click', answerClick)
 
 function answerClick(){
     console.log('checkbox clicked')
@@ -91,15 +91,17 @@ function answerClick(){
     populate(nQ)
 }
 
+// link button to answers
+
 // access question list- question goes to questions box 
 // options go to spans
 function populate(theQuestion){
     $question.text(theQuestion.question)
 
-    $answerBox1.text(theQuestion.options[0])
-    $answerBox2.text(theQuestion.options[1])
-    $answerBox3.text(theQuestion.options[2])
-    $answerBox4.text(theQuestion.options[3])
+    $answerBox0.text(theQuestion.options[0])
+    $answerBox1.text(theQuestion.options[1])
+    $answerBox2.text(theQuestion.options[2])
+    $answerBox3.text(theQuestion.options[3])
 }
 
 $('#startButton').on('click', startClock);
