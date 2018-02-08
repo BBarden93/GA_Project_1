@@ -1,0 +1,38 @@
+// var $button0 = $('#button0')
+//     $button0.val(0)
+//     $button0.on('click', checkAnswer)
+
+// var $button1 = $('#button1')
+//     $button1.val(1)    
+//     $button1.on('click', checkAnswer)
+
+// var $button2 = $('#button2')
+//     $button2.val(2)
+//     $button2.on('click', checkAnswer)
+
+// var $button3 = $('#button3')
+//     $button3.val(3)
+//     $button3.on('click', checkAnswer)
+
+
+// on click, answerClick was run, which in turn called checkAnswer(), which can't access "this" because it's now hearsay
+
+// function answerClick(){
+//     console.log('button clicked')
+    
+//     //check if correct answer
+//     checkAnswer()
+    
+//     console.log('go to next question')
+//     var nQ = nextQuestion()
+//     console.log(nQ)
+//     populate(nQ)
+// }
+
+// the "theQuestion" variable is not accessible globally (and is not a number, which we need to put inside [] if we're trying to access an idex)
+// function checkAnswer(){
+//     console.log($(this))
+//      if ($(this).val() === questionsList[theQuestion].a){
+//         console.log('You are correct')
+//     }
+// }

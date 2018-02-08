@@ -59,8 +59,11 @@ function runClock (){
     }, 1000) 
 }
 function stopTimer(){
-    if (timer === 0) {
+    if (timer === -1) {
     clearInterval(countdown)
+    //store points and reset clock
+    
+    timer = 5;
     }
 }
 
@@ -71,58 +74,13 @@ function nextQuestion(){
 
     return randomNumber;
 }
-
 // make button responsive
-
 var answerBtns = $('.answer-btn')
 answerBtns.on('click', checkAnswer)
 
 answerBtns.each(function( index ){
     answerBtns.eq(index).val(index)
 })
-
-// var $button0 = $('#button0')
-//     $button0.val(0)
-//     $button0.on('click', checkAnswer)
-
-// var $button1 = $('#button1')
-//     $button1.val(1)    
-//     $button1.on('click', checkAnswer)
-
-// var $button2 = $('#button2')
-//     $button2.val(2)
-//     $button2.on('click', checkAnswer)
-
-// var $button3 = $('#button3')
-//     $button3.val(3)
-//     $button3.on('click', checkAnswer)
-
-
-
-// on click, answerClick was run, which in turn called checkAnswer(), which can't access "this" because it's now hearsay
-
-// function answerClick(){
-//     console.log('button clicked')
-    
-//     //check if correct answer
-//     checkAnswer()
-    
-//     console.log('go to next question')
-//     var nQ = nextQuestion()
-//     console.log(nQ)
-//     populate(nQ)
-// }
-
-// the "theQuestion" variable is not accessible globally (and is not a number, which we need to put inside [] if we're trying to access an idex)
-// function checkAnswer(){
-//     console.log($(this))
-//      if ($(this).val() === questionsList[theQuestion].a){
-//         console.log('You are correct')
-//     }
-// }
-
-
-
 
 function checkAnswer(){
     // console.log(questionsList[nextQuestion()].a)
@@ -138,14 +96,6 @@ function checkAnswer(){
     console.log(nQ)
     populate(nQ)
 }
-
-
-
-
-
-
-
-
 
 // access question list- question goes to questions box 
 // options go to spans
