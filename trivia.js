@@ -40,6 +40,28 @@ var $answerBox1 = $('#answerBox1')
 var $answerBox2 = $('#answerBox2')
 var $answerBox3 = $('#answerBox3')
 
+var players = ['Player 1' , 'Player 2'];
+var currentPlayer;
+
+var game = {
+    player1: {
+        played: false,
+        name: "Philippe",
+        score: 0,
+        $scoreBoard: $('#pointsP1')
+    },
+    player2: {
+        played: false,
+        name: "Brittany",
+        score: 0,
+        $scoreBoard: $('#pointsP2')
+    },
+    currentQuestion: null
+}
+
+game.currentPlayer = game.player1
+
+
 // randomizer for choosing next question
 function randomInt(n){
     return Math.floor(Math.random() * n)
@@ -47,30 +69,62 @@ function randomInt(n){
 
 function startClock() {
     console.log('You have clicked the start button') 
-   runClock() 
-   populate(questionsList[nextQuestion()])
+   runClock()
+   populate(nextQuestion())
 }
 function runClock (){
     countdown = setInterval(function(){
         timer--
         // console.log(timer)
-        stopTimer()
+        if (timer === -1) {
+            stopTimer()
+        }
         $seconds.text(timer)
     }, 1000) 
 }
+
 function stopTimer(){
-    if (timer === -1) {
     clearInterval(countdown)
     //reset clock
     timer = 5;
+
+    endRound()
+}
+
+function endRound(){
+    game.currentPlayer.played = true
+    if (game.player1.played && game.player2.played ){
+        // announce winner
+        alert('game over')
+        checkWinner()
+    } else {
+        switchPlayer()
     }
 }
+function checkWinner(){
+    if (game.player1.score > game.player2.score){
+        alert('Player 1 wins!')
+    } else if(game.player1.score === game.player2.score){
+        alert('It is a tie')
+    }else {
+        alert('Player 2 wins!')
+    }
+}
+function switchPlayer() {
+    if (game.currentPlayer === game.player1){
+        game.currentPlayer = game.player2
+    } else {
+        game.currentPlayer = game.player1
+    }
+}
+
 // change question-select random object from questionsList array
 function nextQuestion(){ 
     var randomNumber = randomInt(questionsList.length)
+    game.currentQuestion = questionsList[randomNumber]
     // var theQuestion = questionsList[randomNumber];
 
-    return randomNumber;
+    return game.currentQuestion;
 }
 // make button responsive
 var answerBtns = $('.answer-btn')
@@ -88,27 +142,27 @@ var $pointsP2 = $('#pointsP2');
 
 var score = 0;    
 
+function addPoints(points){
+    game.currentPlayer.score = game.currentPlayer.score + points
+    game.currentPlayer.$scoreBoard.text(game.currentPlayer.score)
+}
+// link button to answers
+// if box clicked = correct answer add points to correct player
 function checkAnswer(){
-    // console.log(questionsList[nextQuestion()].a)
-    // console.log($(this).val())
-     if ($(this).val() === questionsList[nextQuestion()].a.toString()){
+    var questionValue = game.currentQuestion.ptValue
+    
+    if ($(this).val() === game.currentQuestion.a.toString()){
         console.log('You are correct')
-        
-        // input point value to score board
-    function addPoints(){
-         score = score + questionsList[nextQuestion()].ptValue
-        }
-        addPoints()
-        $pointsP1.text(score)
+    // input point value to score board
+        addPoints(questionValue)
+        // $pointsP1.text(score)
         console.log('point added')
     } else {
         console.log('over it')
     }
-
     console.log('go to next question')
-    var nQ = questionsList[nextQuestion()]
-    console.log(nQ)
-    populate(nQ)
+    console.log(game.currentQuestion)
+    populate(nextQuestion())
 }
 
 // access question list- question goes to questions box 
@@ -125,20 +179,8 @@ function populate(x){
 
 $('#startButton').on('click', startClock);
 
-// link button to answers
-// if box clicked = correct answer add points to correct player
-
-
-
-
-
 //switch players after 25 seconds
 
-/*
-var game = {
-    players: [{name:'Player 1'}, {name:'Player 2'}]
-    questions: questionsList,
-    currentQuestion: null,
-    currentPlayer: null,
-}
-*/
+
+
+
