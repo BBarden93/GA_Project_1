@@ -48,12 +48,12 @@ function randomInt(n){
 function startClock() {
     console.log('You have clicked the start button') 
    runClock() 
-   populate()
+   populate(questionsList[nextQuestion()])
 }
 function runClock (){
     countdown = setInterval(function(){
         timer--
-        console.log(timer)
+        // console.log(timer)
         stopTimer()
         $seconds.text(timer)
     }, 1000) 
@@ -67,45 +67,92 @@ function stopTimer(){
 // change question-select random object from questionsList array
 function nextQuestion(){ 
     var randomNumber = randomInt(questionsList.length)
-    var theQuestion = questionsList[randomNumber];
-    return theQuestion;
+    // var theQuestion = questionsList[randomNumber];
+
+    return randomNumber;
 }
 
 // make button responsive
-var $button0 = $('#button0')
-$button0.on('click', answerClick)
-var $button1 = $('#button1')
-$button1.on('click', answerClick)
-var $button2 = $('#button2')
-$button2.on('click', answerClick)
-var $button3 = $('#button3')
-$button3.on('click', answerClick)
 
-function answerClick(){
-    console.log('checkbox clicked')
-    //check if correct answer
+$('.answer-btn').on('click', checkAnswer)
+// var $button0 = $('#button0')
+//     $button0.val(0)
+//     $button0.on('click', checkAnswer)
+
+// var $button1 = $('#button1')
+//     $button1.val(1)    
+//     $button1.on('click', checkAnswer)
+
+// var $button2 = $('#button2')
+//     $button2.val(2)
+//     $button2.on('click', checkAnswer)
+
+// var $button3 = $('#button3')
+//     $button3.val(3)
+//     $button3.on('click', checkAnswer)
+
+
+
+// function answerClick(){
+//     console.log('button clicked')
+    
+//     //check if correct answer
+//     checkAnswer()
+    
+//     console.log('go to next question')
+//     var nQ = nextQuestion()
+//     console.log(nQ)
+//     populate(nQ)
+// }
+
+// function checkAnswer(){
+//     console.log($(this))
+//      if ($(this).val() === questionsList[theQuestion].a){
+//         console.log('You are correct')
+//     }
+// }
+
+
+
+
+function checkAnswer(){
+    console.log(questionsList[nextQuestion()].a)
+    console.log($(this).parentNode
+     if ($(this).val() === questionsList[nextQuestion()].a){
+        console.log('You are correct')
+    } else {
+        console.log('over it')
+    }
 
     console.log('go to next question')
-    var nQ = nextQuestion()
+    var nQ = questionsList[nextQuestion()]
     console.log(nQ)
     populate(nQ)
 }
 
-// link button to answers
+
+
+
+
+
+
+
 
 // access question list- question goes to questions box 
 // options go to spans
-function populate(theQuestion){
-    $question.text(theQuestion.question)
+function populate(x){
+    console.log(x.question)
+    $question.text(x.question)
 
-    $answerBox0.text(theQuestion.options[0])
-    $answerBox1.text(theQuestion.options[1])
-    $answerBox2.text(theQuestion.options[2])
-    $answerBox3.text(theQuestion.options[3])
+    $answerBox0.text(x.options[0])
+    $answerBox1.text(x.options[1])
+    $answerBox2.text(x.options[2])
+    $answerBox3.text(x.options[3])
 }
 
 $('#startButton').on('click', startClock);
 
+// link button to answers
 // if box clicked = correct answer add points to correct player
 
 // input point value to score board
