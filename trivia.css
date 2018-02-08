@@ -37,22 +37,36 @@ span {
     border: 2px solid black;
     padding:7px;
     display: inline-block;
-    float:left;
+    float: left;
+    text-align: center;
+    
 }
 #clock {
     width:100px;
     border: 2px solid black;
     padding:7px;
     display: inline-block;
-    margin: 0 auto;
+    text-align: center;
+    margin: 0px 70px;
 }
 #player2 {
     width:100px;
     border: 2px solid black;
     padding:7px;
     display: inline-block;
-    float:right;
+    float: right;
+    text-align: center;
+   
 }
 #start {
     display: inline-block;
+    width:40px;
+    text-align: center;
+}
+#startButton {
+    text-align: center;
+}
+.top {
+    width:500px;
+    margin: 0 auto;
 }

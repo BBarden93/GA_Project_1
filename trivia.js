@@ -86,7 +86,7 @@ function runClock (){
 function stopTimer(){
     clearInterval(countdown)
     //reset clock
-    timer = 5;
+    timer = 20;
 
     endRound()
 }
