@@ -56,15 +56,17 @@ span {
     display: inline-block;
     float: right;
     text-align: center;
-   
 }
 #start {
     display: inline-block;
-    width:40px;
+    width:100%;
     text-align: center;
+    margin: 20px auto;
 }
 #startButton {
     text-align: center;
+    margin: 0 auto;
+    width:100px;
 }
 .top {
     width:500px;
