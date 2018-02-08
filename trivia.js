@@ -74,7 +74,13 @@ function nextQuestion(){
 
 // make button responsive
 
-$('.answer-btn').on('click', checkAnswer)
+var answerBtns = $('.answer-btn')
+answerBtns.on('click', checkAnswer)
+
+answerBtns.each(function( index ){
+    answerBtns.eq(index).val(index)
+})
+
 // var $button0 = $('#button0')
 //     $button0.val(0)
 //     $button0.on('click', checkAnswer)
@@ -93,6 +99,8 @@ $('.answer-btn').on('click', checkAnswer)
 
 
 
+// on click, answerClick was run, which in turn called checkAnswer(), which can't access "this" because it's now hearsay
+
 // function answerClick(){
 //     console.log('button clicked')
     
@@ -105,6 +113,7 @@ $('.answer-btn').on('click', checkAnswer)
 //     populate(nQ)
 // }
 
+// the "theQuestion" variable is not accessible globally (and is not a number, which we need to put inside [] if we're trying to access an idex)
 // function checkAnswer(){
 //     console.log($(this))
 //      if ($(this).val() === questionsList[theQuestion].a){
@@ -116,9 +125,9 @@ $('.answer-btn').on('click', checkAnswer)
 
 
 function checkAnswer(){
-    console.log(questionsList[nextQuestion()].a)
-    console.log($(this).parentNode
-     if ($(this).val() === questionsList[nextQuestion()].a){
+    // console.log(questionsList[nextQuestion()].a)
+    // console.log($(this).val())
+     if ($(this).val() === questionsList[nextQuestion()].a.toString()){
         console.log('You are correct')
     } else {
         console.log('over it')
