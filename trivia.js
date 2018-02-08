@@ -61,12 +61,10 @@ function runClock (){
 function stopTimer(){
     if (timer === -1) {
     clearInterval(countdown)
-    //store points and reset clock
-    
+    //reset clock
     timer = 5;
     }
 }
-
 // change question-select random object from questionsList array
 function nextQuestion(){ 
     var randomNumber = randomInt(questionsList.length)
@@ -82,11 +80,27 @@ answerBtns.each(function( index ){
     answerBtns.eq(index).val(index)
 })
 
+var $pointsP1 = $('#pointsP1');
+    $pointsP1.text(0);
+
+var $pointsP2 = $('#pointsP2');
+    $pointsP2.text(0);
+
+var score = 0;    
+
 function checkAnswer(){
     // console.log(questionsList[nextQuestion()].a)
     // console.log($(this).val())
      if ($(this).val() === questionsList[nextQuestion()].a.toString()){
         console.log('You are correct')
+        
+        // input point value to score board
+    function addPoints(){
+         score = score + questionsList[nextQuestion()].ptValue
+        }
+        addPoints()
+        $pointsP1.text(score)
+        console.log('point added')
     } else {
         console.log('over it')
     }
@@ -114,18 +128,9 @@ $('#startButton').on('click', startClock);
 // link button to answers
 // if box clicked = correct answer add points to correct player
 
-// input point value to score board
-var $pointsP1 = $('#pointsP1');
- $pointsP1.text(0);
 
-var $pointsP2 = $('#pointsP2');
- $pointsP2.text(0);
 
-var score = 0;
 
-function addPoints(){
-    $pointsP1.text(score + questionsList[randomNumber].ptValue)
-}
 
 //switch players after 25 seconds
 
