@@ -24,7 +24,18 @@ var questionsList = [
     {question: "Git is an open source program for tracking changes in text files.",
     options:["true", "false", "boolean", "Wouldn't you like to know"],
     a: 0,
-    ptValue: 1 }
+    ptValue: 1 },
+
+    {question:"What is the actual value passed through to the function when the function is called?",
+    options:["parameter","argument","local variable","statement"],
+    a: 1,
+    ptValue: 2},
+    
+    {question:"How do you access the property make from the object car?",
+    options:["make.car", "make of car:", "properties.make", "car.make()"],
+    a:3,
+    ptValue: 2},
+
 ]
 // variables for time function
 var $startBtn = $('#startButton')
@@ -56,7 +67,15 @@ var game = {
         score: 0,
         $scoreBoard: $('#pointsP2')
     },
-    currentQuestion: null
+    currentQuestion: null,
+    reset: function(){
+        game.currentPlayer = game.player1
+        game.player1.score = 0
+        game.player2.score = 0
+        game.player1.$scoreBoard.text(0)
+        game.player2.$scoreBoard.text(0)
+
+    }
 }
 
 game.currentPlayer = game.player1
@@ -87,7 +106,6 @@ function stopTimer(){
     clearInterval(countdown)
     //reset clock
     timer = 20;
-
     endRound()
 }
 
@@ -97,6 +115,7 @@ function endRound(){
         // announce winner
         alert('game over')
         checkWinner()
+        game.reset()
     } else {
         switchPlayer()
     }
@@ -110,6 +129,7 @@ function checkWinner(){
         alert('Player 2 wins!')
     }
 }
+//switch players after 20 seconds
 function switchPlayer() {
     if (game.currentPlayer === game.player1){
         game.currentPlayer = game.player2
@@ -179,7 +199,7 @@ function populate(x){
 
 $('#startButton').on('click', startClock);
 
-//switch players after 25 seconds
+
 
 
 
