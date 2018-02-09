@@ -36,7 +36,27 @@ var questionsList = [
     a:3,
     ptValue: 2},
 
+    {question: "Each element in an HTML document is represented by what in the DOM?",
+    options:["tag", "model", "object", "node"],
+    a:3,
+    ptValue:2},
+
+    {question: "What are actions taken by a user that can trigger updates in the DOM?",
+    options:["command", "argument", "event", "script"],
+    a:2,
+    ptValue:2},
+
+    {question: "What event occurs whenan element loses focus?",
+    options:["blur", "resize", "load", "focus"],
+    a:0,
+    ptValue:3},
+
+    {question: "What term is used in event handling to refer to a specific object?",
+    options:["click", "this", "node", "focus"],
+    a:0,
+    ptValue:3},
 ]
+
 // variables for time function
 var $startBtn = $('#startButton')
 var $seconds = $('#seconds')

@@ -1,4 +1,4 @@
-#Trivia Game
+# Trivia Game
 ### Challenge a friend and test your coding skills!
 
 ![](https://upload.wikimedia.org/wikipedia/en/c/c3/Wwtbam-uk-2010.png)
