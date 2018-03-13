@@ -55,6 +55,11 @@ var questionsList = [
     options:["click", "this", "node", "focus"],
     a:0,
     ptValue:3},
+    
+    {question: "What is Ruby on Rails?",
+    options:["A gem for JavaScript", "A programming language for trains", "A server-side web application framework", "A front-end programming language"],
+    a:2,
+    ptValue:3},
 ]
 
 // variables for time function
