@@ -1,4 +1,4 @@
-#Trivia Game
+# Trivia Game
 ### Challenge a friend and test your coding skills!
 
 ![](https://upload.wikimedia.org/wikipedia/en/c/c3/Wwtbam-uk-2010.png)
@@ -20,7 +20,7 @@ As a player I can click the start button and begin the game.
 
 As a player I can select answers to questions.
 
-###Approach
+### Approach
 1. Created basic structure using HTML and CSS
 2. Created an array of objects which served as the text to be displayed via the web browser to players.
 3. Created logic using JavaScript and jQuery to populate the html elements with the objects from the array. 
