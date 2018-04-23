@@ -1,4 +1,5 @@
-# Trivia Game
+# Project 1: Trivia Game
+![](https://raw.githubusercontent.com/generalassembly/ga-ruby-on-rails-for-devs/master/images/ga.png)
 ### Challenge a friend and test your coding skills!
 
 ![](https://upload.wikimedia.org/wikipedia/en/c/c3/Wwtbam-uk-2010.png)
